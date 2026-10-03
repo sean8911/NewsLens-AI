@@ -1,0 +1,125 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  workflow:
+    name: Workflow lint
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install verified actionlint
+        working-directory: ${{ runner.temp }}
+        run: |
+          curl --fail --silent --show-error --location --retry 3 \
+            https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_linux_amd64.tar.gz \
+            --output actionlint.tar.gz
+          echo '8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8  actionlint.tar.gz' | sha256sum --check
+          tar -xzf actionlint.tar.gz actionlint
+      - name: Validate workflow syntax and shell commands
+        run: '"$RUNNER_TEMP/actionlint" -color .github/workflows/ci.yml'
+
+  backend:
+    name: Backend lint and tests
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      # Disposable runner-only database; never use application or production credentials.
+      NEWSLENS_TEST_DATABASE_URL: postgresql+pg8000://newslens_ci:ci-only-password@127.0.0.1:5432/newslens_ci
+      HF_HUB_OFFLINE: "1"
+      TRANSFORMERS_OFFLINE: "1"
+      TOKENIZERS_PARALLELISM: "false"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: |
+            pyproject.toml
+            infra/docker/constraints.txt
+            requirements/ci.txt
+      - name: Install CPU dependencies and development tools
+        run: |
+          python -m pip install torch==2.14.0 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install --constraint infra/docker/constraints.txt --requirement requirements/ci.txt --editable .
+          python -m pip check
+      - name: Lint Python
+        run: python -m ruff check backend ingestion nlp tests scripts infra/docker --output-format github
+      - name: Start native PostgreSQL and create isolated test database
+        run: |
+          sudo systemctl start postgresql.service
+          sudo -u postgres psql --set=ON_ERROR_STOP=1 --command="CREATE ROLE newslens_ci LOGIN PASSWORD 'ci-only-password';"
+          sudo -u postgres createdb --owner=newslens_ci newslens_ci
+          pg_isready --host=127.0.0.1 --port=5432
+      - name: Run strict offline and PostgreSQL acceptance
+        run: python scripts/run_tests.py --suite all --output-dir test-results/backend
+      - name: Upload backend diagnostics
+        if: ${{ always() }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: backend-test-results
+          path: test-results/backend/
+          if-no-files-found: warn
+          retention-days: 7
+
+  frontend:
+    name: Frontend lint, types, build and tests
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: frontend
+    env:
+      NEXT_TELEMETRY_DISABLED: "1"
+      NEWSLENS_TEST_REPORT: ../test-results/frontend/results.json
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+          package-manager-cache: false
+      - name: Install pinned pnpm and locked dependencies
+        run: |
+          npm install --global pnpm@11.19.0
+          pnpm install --frozen-lockfile
+      - name: Lint frontend
+        run: pnpm lint
+      # Build first: a clean checkout needs Next's generated route types for tsc.
+      - name: Production build
+        run: pnpm build
+      - name: Check TypeScript
+        run: pnpm typecheck
+      - name: Test HTTP proxy, server rendering and helpers
+        run: pnpm test
+      - name: Upload frontend diagnostics
+        if: ${{ always() }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: frontend-test-results
+          path: |
+            test-results/frontend/
+            frontend/test-results/
+          if-no-files-found: warn
+          retention-days: 7

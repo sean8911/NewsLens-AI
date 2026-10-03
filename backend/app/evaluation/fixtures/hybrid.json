@@ -1,0 +1,32 @@
+{
+  "name": "Authored news retrieval development cases v1",
+  "note": "Synthetic development corpus with near-identical model IDs, keyword distractions, and paraphrases. Judgments are authored, not independent or held out.",
+  "documents": [
+    {"id": 1, "title": "Independent lab measures GPT-6-A12 electricity use", "description": "Researchers report GPT-6-A12 energy consumption during inference. The model used less electricity than the previous generation across identical tasks."},
+    {"id": 2, "title": "Cloud operators publish efficiency comparison", "description": "Data centres compared GPT-6-A12 energy consumption with competing systems. The report gives measured electricity demand and operating costs."},
+    {"id": 3, "title": "GPT-6-B12 energy consumption falls in new benchmark", "description": "GPT-6-B12 energy consumption was measured during inference. Researchers found lower electricity use and cheaper operation for this different model."},
+    {"id": 4, "title": "Search archive adds a new directory entry", "description": "The directory repeats the heading GPT-6-A12 energy consumption. GPT-6-A12 energy consumption. GPT-6-A12 energy consumption. It provides navigation links but contains no measurements or research findings."},
+    {"id": 5, "title": "Z7 power packs withdrawn after charging fires", "description": "Regulators ordered a Z7 battery recall after several units overheated. Customers should stop using affected power packs and contact the manufacturer."},
+    {"id": 6, "title": "Consumer groups explain replacement programme", "description": "Owners can claim a refund or a replacement under the Z7 battery recall. Inspectors identified a fault in the cells sold last winter."},
+    {"id": 7, "title": "Z8 battery recall follows overheating reports", "description": "The Z8 battery recall affects a different range of power packs. Buyers of Z8 units should contact retailers after reports of charging fires."},
+    {"id": 8, "title": "Electronic band announces festival performance", "description": "Z7 Battery Recall is the stage name of a new musical group. Z7 Battery Recall will release an album. Fans of Z7 Battery Recall can buy concert tickets."},
+    {"id": 9, "title": "ACME reports strong semiconductor sales", "description": "ACME chip revenue increased as data centres ordered more processors. The manufacturer raised its sales forecast after publishing quarterly results."},
+    {"id": 10, "title": "Analysts examine chipmaker's financial results", "description": "The latest ACME chip revenue figures show a shift toward server processors. Analysts compare sales growth with margins and factory costs."},
+    {"id": 11, "title": "ACMX chip revenue beats expectations", "description": "ACMX chip revenue surged as customers bought server processors. ACMX is a different listed semiconductor company with similar products."},
+    {"id": 12, "title": "Stock glossary includes a frequently requested phrase", "description": "ACME chip revenue is a glossary heading. ACME chip revenue appears in its index. The glossary repeats ACME chip revenue without reporting company results."},
+    {"id": 13, "title": "Factories retrain staff after introducing robots", "description": "Machines now perform repetitive assembly tasks. Employers are teaching displaced workers maintenance and technical skills."},
+    {"id": 14, "title": "Office automation changes clerical roles", "description": "Software handles routine paperwork while companies train employees for different responsibilities. Some positions are being eliminated."},
+    {"id": 15, "title": "Football club wins championship on penalties", "description": "The team lifted the trophy after a tense final. Supporters celebrated the tournament victory."},
+    {"id": 16, "title": "Experimental vaccine protects trial volunteers", "description": "Doctors tested an immunization against a viral illness. Participants receiving the vaccine developed fewer infections."},
+    {"id": 17, "title": "Central bank increases interest rates", "description": "Policymakers raised borrowing costs to slow inflation after consumer prices rose faster than expected."},
+    {"id": 18, "title": "Astronomers identify a distant planet", "description": "A telescope detected a previously unseen world orbiting a nearby star."}
+  ],
+  "queries": [
+    {"id": "model-efficiency", "q": "GPT-6-A12 energy consumption", "relevance": {"1": 3, "2": 3}},
+    {"id": "product-recall", "q": "Z7 battery recall", "relevance": {"5": 3, "6": 3}},
+    {"id": "ticker-earnings", "q": "ACME chip revenue", "relevance": {"9": 3, "10": 3}},
+    {"id": "employment-paraphrase", "q": "How is AI changing employment?", "relevance": {"13": 3, "14": 3}},
+    {"id": "sport-paraphrase", "q": "Who won the soccer tournament?", "relevance": {"15": 3}},
+    {"id": "vaccine-paraphrase", "q": "Research into immunization against disease", "relevance": {"16": 3}}
+  ]
+}

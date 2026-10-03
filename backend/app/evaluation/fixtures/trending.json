@@ -1,0 +1,12 @@
+{
+  "as_of": "2026-09-12T12:00:00Z",
+  "window_hours": 24,
+  "groups": [
+    {"topic": "Semiconductors", "publisher_prefix": "Chip News ", "count": 6, "distinct_publishers": true, "hours_ago": 2, "entity": "NVIDIA"},
+    {"topic": "Semiconductors", "publisher_prefix": "Chip News ", "count": 2, "distinct_publishers": true, "hours_ago": 26, "entity": "NVIDIA"},
+    {"topic": "Business", "publisher_prefix": "Bulk Wire", "count": 20, "distinct_publishers": false, "hours_ago": 1},
+    {"topic": "Business", "publisher_prefix": "Second Wire", "count": 1, "distinct_publishers": false, "hours_ago": 3},
+    {"topic": "Business", "publisher_prefix": "Previous Business ", "count": 4, "distinct_publishers": true, "hours_ago": 27},
+    {"topic": "Health", "publisher_prefix": "Health News ", "count": 2, "distinct_publishers": true, "hours_ago": 4}
+  ]
+}

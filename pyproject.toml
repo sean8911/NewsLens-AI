@@ -1,0 +1,87 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "newslens-ai"
+version = "0.38.0"
+description = "NewsLens AI: source-grounded news search and conversation."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "feedparser>=6.0.12,<7",
+    "requests>=2.32.3,<3",
+    "urllib3>=2.7,<3",
+    "pydantic>=2.10,<3",
+    "pydantic-settings>=2.7,<3",
+    "SQLAlchemy>=2.0.36,<2.1",
+    "alembic>=1.14,<2",
+    "pg8000>=1.31,<2",
+    "beautifulsoup4>=4.13,<5",
+    "ftfy>=6.3,<7",
+    "APScheduler>=3.11,<4",
+    "protego>=0.6.2,<0.7",
+    "lingua-language-detector==2.1.1",
+    "onnxruntime>=1.20,<2",
+    "tokenizers>=0.21,<1",
+    "numpy>=1.26,<3",
+    "pycountry==26.2.16",
+    "yake==0.6.0",
+    "segtok==1.5.11",
+    "sentence-transformers==5.7.0",
+    "sentencepiece>=0.2,<0.3",
+    "torch>=2.6,<3",
+    "scikit-learn==1.9.0",
+    "qdrant-client==1.19.0",
+    "portalocker>=3.2,<4",
+    "fastapi>=0.115,<1",
+    "uvicorn>=0.34,<1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3,<10", "ruff>=0.11,<1", "httpx>=0.28,<1"]
+
+[project.scripts]
+newslens-performance = "backend.app.performance_cli:main"
+newslens-collect = "ingestion.cli:main"
+newslens-articles = "backend.app.database.cli:main"
+newslens-clean = "ingestion.cleaners.cli:main"
+newslens-updates = "ingestion.scheduler:main"
+newslens-language = "nlp.language.cli:main"
+newslens-topics = "nlp.classification.cli:main"
+newslens-entities = "nlp.entities.cli:main"
+newslens-keywords = "nlp.keywords.cli:main"
+newslens-summarize = "nlp.summarization.cli:main"
+newslens-embed = "nlp.embeddings.cli:main"
+newslens-multilingual = "nlp.multilingual.cli:main"
+newslens-rerank = "nlp.reranking.cli:main"
+newslens-search = "backend.app.search_cli:main"
+newslens-chat = "backend.app.chat_cli:main"
+newslens-research = "backend.app.research_cli:main"
+newslens-api = "backend.app.api_cli:main"
+newslens-evaluate-search = "backend.app.evaluation.cli:main"
+newslens-dataset = "backend.app.evaluation.dataset_cli:main"
+newslens-benchmark = "backend.app.evaluation.benchmark_cli:main"
+newslens-evaluate-rag = "backend.app.evaluation.rag_cli:main"
+newslens-events = "backend.app.events_cli:main"
+newslens-trending = "backend.app.trending_cli:main"
+
+[tool.setuptools.packages.find]
+include = ["backend*", "ingestion*", "nlp*"]
+
+[tool.setuptools.package-data]
+"ingestion.feeds" = ["*.json"]
+"ingestion.extraction" = ["*.json"]
+"backend.app.evaluation" = ["fixtures/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = ["integration: requires PostgreSQL via NEWSLENS_TEST_DATABASE_URL"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

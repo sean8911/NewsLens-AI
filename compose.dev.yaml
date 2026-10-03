@@ -1,0 +1,17 @@
+# Optional source reload; dependency/config edits still require rebuilding.
+services:
+  backend:
+    command: [python, -m, uvicorn, "backend.app.main:app", --host, "0.0.0.0", --port, "8000", --reload, --reload-dir, /app/backend, --reload-dir, /app/ingestion, --reload-dir, /app/nlp, --no-access-log, --no-proxy-headers]
+    environment:
+      WATCHFILES_FORCE_POLLING: "true"
+    volumes:
+      - ./backend:/app/backend:ro
+      - ./ingestion:/app/ingestion:ro
+      - ./nlp:/app/nlp:ro
+  frontend:
+    build:
+      target: development
+    environment:
+      WATCHPACK_POLLING: "true"
+    volumes:
+      - ./frontend/src:/app/src:ro

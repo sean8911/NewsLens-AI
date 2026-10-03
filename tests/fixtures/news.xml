@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Example News</title><link>https://example.com</link><description>Test feed</description>
+    <item>
+      <title> Example AI headline </title>
+      <description><![CDATA[<p>Research &amp; technology update.</p>]]></description>
+      <link>https://example.com/news/ai?ref=rss</link>
+      <author>reporter@example.com (Example Reporter)</author>
+      <pubDate>Wed, 09 Sep 2026 14:30:00 +0800</pubDate>
+      <category>AI</category><category>Technology</category><category>AI</category>
+    </item>
+    <item><title>Optional fields missing</title><link>https://example.com/minimal</link></item>
+    <item>
+      <title>Invalid date</title><link>https://example.com/invalid-date</link>
+      <pubDate>definitely not a date</pubDate>
+    </item>
+    <item><link>https://example.com/missing-title</link></item>
+    <item><title>Invalid link</title><link>javascript:alert(1)</link></item>
+  </channel>
+</rss>

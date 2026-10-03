@@ -1,0 +1,52 @@
+[
+  {
+    "id": "english-education",
+    "language": "en",
+    "text": "The government announced new funding for public schools across the country. Officials said the programme would provide better equipment and support for teachers."
+  },
+  {
+    "id": "english-research",
+    "language": "en",
+    "text": "Scientists have published the results of a new study on renewable energy. The researchers compared several technologies and explained how the findings could help communities reduce electricity costs."
+  },
+  {
+    "id": "malay-education",
+    "language": "ms",
+    "text": "Kerajaan Malaysia telah mengumumkan peruntukan baharu bagi meningkatkan mutu pendidikan di sekolah luar bandar. Menurut kementerian, bantuan tersebut akan disalurkan kepada pelajar dan guru mulai tahun hadapan."
+  },
+  {
+    "id": "malay-floods",
+    "language": "ms",
+    "text": "Penduduk di beberapa buah kampung telah dipindahkan ke pusat pemindahan sementara selepas hujan lebat berterusan sejak malam tadi. Pihak berkuasa menasihatkan orang ramai supaya mematuhi arahan keselamatan dan mengelakkan kawasan yang dinaiki air."
+  },
+  {
+    "id": "chinese-simplified",
+    "language": "zh",
+    "text": "马来西亚政府宣布增加教育拨款，以改善乡村学校的教学设施。教育部长表示，这项计划将为学生提供更多学习资源，并加强教师培训。有关部门将在明年公布具体实施方案。"
+  },
+  {
+    "id": "chinese-traditional",
+    "language": "zh",
+    "text": "研究團隊今日公布最新的再生能源研究成果。專家表示，新技術能夠提高發電效率並降低成本，未來將在不同地區進行更多測試，以評估實際應用的效果。"
+  },
+  {
+    "id": "indonesian-unsupported",
+    "language": null,
+    "text": "Pemerintah Indonesia mengumumkan kebijakan baru untuk meningkatkan pendidikan di seluruh negeri. Masyarakat diminta untuk mengikuti peraturan yang telah ditetapkan oleh kementerian."
+  },
+  {
+    "id": "french-unsupported",
+    "language": null,
+    "text": "Le gouvernement a annoncé de nouvelles mesures pour soutenir les entreprises et les familles dans toutes les régions du pays. Les responsables présenteront les détails du programme la semaine prochaine."
+  },
+  {
+    "id": "japanese-unsupported",
+    "language": null,
+    "text": "政府は地方の学校を支援するため、新しい教育計画を発表しました。来年度から学習設備の改善と教員の研修を進める予定です。担当者は子供たちの学習環境を整えることが重要だと述べました。"
+  },
+  {
+    "id": "arabic-unsupported",
+    "language": null,
+    "text": "أعلنت الحكومة عن خطة جديدة لتحسين التعليم في المدارس الريفية وتوفير المزيد من الموارد للطلاب والمعلمين. وقال المسؤولون إن البرنامج سيبدأ العام المقبل بعد الانتهاء من دراسة احتياجات المدارس."
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "description": "Synthetic Phase 23 acceptance articles; not real news. Three topics in three languages.",
+  "documents": [
+    {"id": 1, "language": "en", "topic": "ai", "title": "Malaysia announces artificial intelligence safety policy", "description": "Malaysia announced a national artificial intelligence safety policy requiring government agencies to assess AI risks before deployment."},
+    {"id": 2, "language": "ms", "topic": "ai", "title": "Malaysia mengumumkan dasar keselamatan kecerdasan buatan", "description": "Malaysia mengumumkan dasar keselamatan kecerdasan buatan kebangsaan yang mewajibkan agensi kerajaan menilai risiko AI sebelum pelaksanaan."},
+    {"id": 3, "language": "zh", "topic": "ai", "title": "马来西亚宣布人工智能安全政策", "description": "马来西亚宣布国家人工智能安全政策，要求政府机构在部署人工智能之前评估风险。"},
+    {"id": 4, "language": "en", "topic": "flood", "title": "Flooding closes schools in Kelantan", "description": "The education department closed 12 schools in Kelantan after heavy rain caused severe flooding. Classes will resume after safety inspections."},
+    {"id": 5, "language": "ms", "topic": "flood", "title": "Banjir menyebabkan sekolah di Kelantan ditutup", "description": "Jabatan pendidikan menutup 12 sekolah di Kelantan selepas hujan lebat menyebabkan banjir teruk. Kelas akan disambung selepas pemeriksaan keselamatan."},
+    {"id": 6, "language": "zh", "topic": "flood", "title": "洪水导致吉兰丹学校关闭", "description": "暴雨引发严重洪水后，教育部门关闭了吉兰丹的12所学校。安全检查完成后将恢复上课。"},
+    {"id": 7, "language": "en", "topic": "rail", "title": "Kuala Lumpur commuters receive cheaper train tickets", "description": "The transport ministry reduced monthly commuter train fares by 20 percent in Kuala Lumpur to encourage public transport use."},
+    {"id": 8, "language": "ms", "topic": "rail", "title": "Tambang kereta api untuk penumpang Kuala Lumpur dikurangkan", "description": "Kementerian pengangkutan mengurangkan tambang bulanan kereta api komuter sebanyak 20 peratus di Kuala Lumpur untuk menggalakkan penggunaan pengangkutan awam."},
+    {"id": 9, "language": "zh", "topic": "rail", "title": "吉隆坡通勤列车票价下调", "description": "交通部将吉隆坡通勤列车的月票价格降低了20%，以鼓励公众使用公共交通。"}
+  ],
+  "queries": [
+    {"language": "en", "topic": "ai", "question": "What are the latest AI policy developments in Malaysia?", "ids": [1, 2, 3]},
+    {"language": "ms", "topic": "ai", "question": "Apakah perkembangan terbaru AI di Malaysia?", "ids": [1, 2, 3]},
+    {"language": "zh", "topic": "ai", "question": "最近马来西亚的AI政策有什么发展？", "ids": [1, 2, 3]},
+    {"language": "en", "topic": "flood", "question": "Why did schools close in Kelantan?", "ids": [4, 5, 6]},
+    {"language": "ms", "topic": "flood", "question": "Mengapakah sekolah di Kelantan ditutup?", "ids": [4, 5, 6]},
+    {"language": "zh", "topic": "flood", "question": "吉兰丹的学校为什么关闭？", "ids": [4, 5, 6]},
+    {"language": "en", "topic": "rail", "question": "How did commuter train fares change in Kuala Lumpur?", "ids": [7, 8, 9]},
+    {"language": "ms", "topic": "rail", "question": "Bagaimanakah tambang kereta api komuter berubah di Kuala Lumpur?", "ids": [7, 8, 9]},
+    {"language": "zh", "topic": "rail", "question": "吉隆坡通勤列车的票价有什么变化？", "ids": [7, 8, 9]}
+  ]
+}

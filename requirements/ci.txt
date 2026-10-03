@@ -1,0 +1,5 @@
+# CI/test tooling. Runtime constraints are shared with infra/docker/constraints.txt;
+# using that text file does not require Docker. Install with the workflow command.
+pytest==9.1.1
+ruff==0.16.6
+httpx==0.28.1

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel><title>Beta Test News</title>
+  <item>
+    <title>NVIDIA unveils a new GPU</title>
+    <link>https://beta.example/gpu</link>
+    <description><![CDATA[<p>NVIDIA unveiled a new GPU for research teams.</p>]]></description>
+    <pubDate>Wed, 09 Sep 2026 10:00:00 GMT</pubDate>
+  </item>
+</channel></rss>

@@ -1,0 +1,121 @@
+import type {
+  NewsEvent,
+  EvidenceCitation,
+  EventComparison,
+  EventTimeline,
+} from "../../src/lib/types";
+export const citation: EvidenceCitation = {
+  citation_id: 1,
+  article_id: 10,
+  source: "Test Publisher",
+  title: "Fixture report",
+  url: "https://example.com/report",
+  published_at: "2026-09-01T10:00:00Z",
+  excerpt: "The source says ten units.",
+};
+export const fact = { text: "Ten units were reported.", citation_ids: [1] };
+export const event: NewsEvent = {
+  id: 2,
+  title: "Fixture event",
+  summary: "Legacy summary must not be used",
+  source_count: 2,
+  article_count: 2,
+  last_updated_at: "2026-09-02T10:00:00Z",
+  last_published_at: citation.published_at,
+  stale: false,
+  related_entities: [
+    {
+      id: 7,
+      name: "Fixture organization",
+      entity_type: "ORGANIZATION",
+      article_ids: [10],
+    },
+  ],
+  articles: [
+    {
+      article_id: 10,
+      title: citation.title,
+      source: citation.source,
+      url: citation.url,
+      published_at: citation.published_at,
+      stale: false,
+    },
+  ],
+  event_summary: {
+    status: "summarized",
+    generated_at: "2026-09-02T10:00:00Z",
+    stale: false,
+    document: {
+      what_happened: fact,
+      key_facts: [fact],
+      latest_update: null,
+      latest_reported_at: citation.published_at,
+      organizations: [],
+      people: [],
+      citations: [citation],
+      source_count: 2,
+      article_count: 2,
+      total_event_articles: 3,
+      omitted_article_ids: [12],
+    },
+  },
+};
+export const comparison: EventComparison = {
+  event_id: 2,
+  status: "compared",
+  stale: false,
+  computed_at: "2026-09-02T10:00:00Z",
+  notes: [],
+  document: {
+    agreement: [],
+    differences: [],
+    additional_details: [fact],
+    emphasis: [],
+    citations: [{ ...citation, source: "Comparison Publisher" }],
+    source_count: 2,
+    article_count: 2,
+    total_event_articles: 3,
+    omitted_article_ids: [12],
+    scope: ["Compare excerpts only."],
+  },
+};
+export const timeline: EventTimeline = {
+  event_id: 2,
+  status: "ready",
+  stale: false,
+  computed_at: "2026-09-02T10:00:00Z",
+  notes: [],
+  document: {
+    items: [
+      {
+        id: "2:10",
+        timestamp: citation.published_at,
+        timestamp_basis: "publication",
+        description: "Dated evidence",
+        source_article_id: 10,
+        citation,
+      },
+    ],
+    undated_items: [
+      {
+        id: "2:11",
+        timestamp: null,
+        timestamp_basis: "unknown",
+        description: "Undated evidence",
+        source_article_id: 11,
+        citation: { ...citation, article_id: 11, published_at: null },
+      },
+    ],
+    excluded_articles: [{ article_id: 12, reason: "insufficient_text" }],
+    count: 2,
+    total_count: 12,
+    dated_count: 10,
+    undated_count: 2,
+    total_event_articles: 13,
+    source_count: 2,
+    limit: 2,
+    offset: 0,
+    next_offset: 2,
+    scope: ["Publication time, not occurrence time."],
+  },
+};

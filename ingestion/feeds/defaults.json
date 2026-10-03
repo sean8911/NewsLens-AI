@@ -1,0 +1,10 @@
+[
+  {"id": "bbc-world", "source": "BBC News", "url": "https://feeds.bbci.co.uk/news/world/rss.xml", "category": "World News"},
+  {"id": "bbc-technology", "source": "BBC News", "url": "https://feeds.bbci.co.uk/news/technology/rss.xml", "category": "Technology"},
+  {"id": "bbc-business", "source": "BBC News", "url": "https://feeds.bbci.co.uk/news/business/rss.xml", "category": "Business"},
+  {"id": "bbc-science", "source": "BBC News", "url": "https://feeds.bbci.co.uk/news/science_and_environment/rss.xml", "category": "Science"},
+  {"id": "guardian-ai", "source": "The Guardian", "url": "https://www.theguardian.com/technology/artificialintelligenceai/rss", "category": "Artificial Intelligence"},
+  {"id": "guardian-malaysia", "source": "The Guardian", "url": "https://www.theguardian.com/world/malaysia/rss", "category": "Malaysia"},
+  {"id": "cna-asia", "source": "CNA", "url": "https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=6511", "category": "Asia"},
+  {"id": "cna-world", "source": "CNA", "url": "https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=6311", "category": "World News"}
+]

@@ -1,0 +1,19 @@
+# Reuse this workspace's existing weights without modifying them.
+# Never mount the native PostgreSQL or embedded Qdrant storage into containers.
+x-models: &models
+  volumes:
+    - type: bind
+      source: ./.local/models
+      target: /models
+      read_only: true
+      bind:
+        create_host_path: false
+services:
+  backend:
+    <<: *models
+  migrate:
+    <<: *models
+  worker:
+    <<: *models
+  models:
+    <<: *models

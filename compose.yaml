@@ -1,0 +1,99 @@
+name: newslens-dev
+
+x-backend: &backend
+  image: newslens-backend:0.38.0
+  build:
+    context: .
+    dockerfile: infra/docker/backend.Dockerfile
+  init: true
+  environment: &backend-env
+    POSTGRES_PASSWORD: ${DOCKER_POSTGRES_PASSWORD:-newslens-local-dev}
+    NEWSLENS_QDRANT_URL: http://qdrant:6333
+    NEWSLENS_QDRANT_COLLECTION_PREFIX: newslens_docker_articles
+    NEWSLENS_TOPIC_MODEL_PATH: /models/topics
+    NEWSLENS_ENTITY_MODEL_PATH: /models/entities
+    NEWSLENS_EMBEDDING_MODEL_PATH: /models/embeddings
+    NEWSLENS_RERANKING_MODEL_PATH: /models/reranking
+    NEWSLENS_TRANSLATION_MODEL_PATH: /models/translation
+    NEWSLENS_CHAT_MODEL_PATH: /models/chat
+    NEWSLENS_CONTENT_WEB_ENABLED: "false"
+    NEWSLENS_MULTILINGUAL_ENABLED: "true"
+  volumes:
+    - models:/models
+
+services:
+  postgres:
+    image: postgres:17-bookworm
+    environment:
+      POSTGRES_DB: newslens
+      POSTGRES_USER: newslens
+      POSTGRES_PASSWORD: ${DOCKER_POSTGRES_PASSWORD:-newslens-local-dev}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  qdrant:
+    image: qdrant/qdrant:v1.19.0
+    environment:
+      QDRANT__TELEMETRY_DISABLED: "true"
+    volumes:
+      - qdrant-data:/qdrant/storage
+  migrate:
+    <<: *backend
+    command: [python, infra/docker/bootstrap.py]
+    depends_on:
+      postgres:
+        condition: service_healthy
+      qdrant:
+        condition: service_started
+    restart: "no"
+  backend:
+    <<: *backend
+    ports:
+      - "127.0.0.1:${DOCKER_API_PORT:-18000}:8000"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/system/status', timeout=4)"]
+      interval: 15s
+      timeout: 5s
+      start_period: 30s
+      retries: 10
+  frontend:
+    image: newslens-frontend:0.38.0
+    build:
+      context: ./frontend
+    environment:
+      NEWSLENS_API_URL: http://backend:8000
+    ports:
+      - "127.0.0.1:${DOCKER_WEB_PORT:-13000}:3000"
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:3000/api/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      start_period: 15s
+      retries: 10
+  models:
+    <<: *backend
+    profiles: [tools]
+    command: [python, infra/docker/prepare_models.py]
+  worker:
+    <<: *backend
+    profiles: [worker]
+    command: [python, -m, ingestion.scheduler, run]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    stop_grace_period: 60s
+
+volumes:
+  postgres-data:
+  qdrant-data:
+  models:

@@ -1,0 +1,21 @@
+{
+  "name": "Authored news time-intent development cases v1",
+  "as_of": "2026-09-11T12:00:00+00:00",
+  "note": "Synthetic documents and judgments defined before running the model. End-to-end comparison includes intent parsing and date filters; not a held-out benchmark.",
+  "documents": [
+    {"id": 1, "title": "NVIDIA AI chip shipments accelerate in January", "content": "NVIDIA shipped its new AI chips to cloud customers in January. The company reported strong demand for its accelerator architecture.", "published_at": "2026-01-12T09:00:00+00:00"},
+    {"id": 2, "title": "NVIDIA begins new AI chip shipments", "content": "NVIDIA began shipping an updated generation of AI accelerator chips on Thursday. Cloud customers received the first production deliveries this week.", "published_at": "2026-09-10T09:00:00+00:00"},
+    {"id": 3, "title": "NVIDIA expands AI chip delivery programme", "content": "NVIDIA announced additional AI chip shipments for cloud operators. The delivery programme expanded at the beginning of September.", "published_at": "2026-09-04T09:00:00+00:00"},
+    {"id": 4, "title": "NVIDIA sponsors video game festival", "content": "NVIDIA sponsored a gaming festival where players competed in an esports tournament. Organizers announced the winners today.", "published_at": "2026-09-11T10:00:00+00:00"},
+    {"id": 5, "title": "NVIDIA AI chip shipments expected in December", "content": "NVIDIA AI chip shipments are projected to expand in December. These delivery estimates have not yet been confirmed.", "published_at": "2026-12-01T09:00:00+00:00"},
+    {"id": 6, "title": "NVIDIA reports January shipment constraints", "content": "NVIDIA reported that AI chip shipments faced supply constraints during January. Cloud buyers experienced delivery delays that month.", "published_at": "2026-01-20T09:00:00+00:00"},
+    {"id": 7, "title": "NVIDIA reviews summer AI chip deliveries", "content": "NVIDIA reviewed its AI chip shipments in June. Cloud customers expanded purchases of the accelerator architecture during the summer.", "published_at": "2026-06-10T09:00:00+00:00"},
+    {"id": 8, "title": "AMD ships new processors in January", "content": "AMD delivered new processors to customers in January. The company reported increased demand for its chips.", "published_at": "2026-01-15T09:00:00+00:00"},
+    {"id": 9, "title": "NVIDIA AI chip shipment outlook", "content": "An undated report describes NVIDIA AI chip shipments and delivery plans for cloud customers.", "published_at": null}
+  ],
+  "queries": [
+    {"id": "latest", "q": "latest NVIDIA AI chip shipments", "relevance": {"2": 3, "3": 2, "7": 1}},
+    {"id": "january", "q": "NVIDIA AI chip shipments in January", "relevance": {"1": 3, "6": 3}},
+    {"id": "neutral", "q": "NVIDIA accelerator architecture", "relevance": {"1": 3, "2": 3, "3": 2, "7": 3}}
+  ]
+}

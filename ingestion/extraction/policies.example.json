@@ -1,0 +1,10 @@
+[
+  {
+    "host": "example.com",
+    "terms_allow_extraction": false,
+    "terms_url": "https://example.com/terms",
+    "review_note": "Example only. Review the publisher's terms and permissions before enabling.",
+    "article_selector": "article",
+    "delay_seconds": 2
+  }
+]

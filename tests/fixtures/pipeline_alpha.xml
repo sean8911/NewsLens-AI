@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel><title>Alpha Test News</title>
+  <item>
+    <title><![CDATA[ NVIDIA   launches a new GPU ]]></title>
+    <link>https://alpha.example/gpu?utm_source=rss</link>
+    <description><![CDATA[<p>NVIDIA launched a new GPU for research &amp; computing.</p>]]></description>
+    <pubDate>Wed, 09 Sep 2026 08:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>NVIDIA launches a new GPU</title>
+    <link>https://alpha.example/gpu?utm_source=duplicate</link>
+    <description>Duplicate syndicated feed entry.</description>
+    <pubDate>Wed, 09 Sep 2026 08:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>NVIDIA reports quarterly earnings</title>
+    <link>https://alpha.example/earnings</link>
+    <description>NVIDIA reported quarterly earnings and revenue growth.</description>
+    <pubDate>Wed, 09 Sep 2026 09:00:00 GMT</pubDate>
+  </item>
+  <item><title>Unusable article without a URL</title></item>
+</channel></rss>

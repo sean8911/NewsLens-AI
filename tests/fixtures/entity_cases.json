@@ -1,0 +1,64 @@
+[
+  {
+    "id": "chip-launch", "language": "en",
+    "title": "NVIDIA CEO Jensen Huang announced a new chip.",
+    "content": "NVIDIA will expand its research office in Taipei, Taiwan.",
+    "expected_entities": [
+      {"name": "NVIDIA", "entity_type": "ORGANIZATION"},
+      {"name": "Jensen Huang", "entity_type": "PERSON"},
+      {"name": "Taipei", "entity_type": "LOCATION"},
+      {"name": "Taiwan", "entity_type": "COUNTRY"}
+    ]
+  },
+  {
+    "id": "software-office", "language": "en",
+    "title": "Microsoft opens a research center in London",
+    "description": "Satya Nadella said Microsoft would hire engineers in the United Kingdom.",
+    "expected_entities": [
+      {"name": "Microsoft", "entity_type": "ORGANIZATION"},
+      {"name": "London", "entity_type": "LOCATION"},
+      {"name": "Satya Nadella", "entity_type": "PERSON"},
+      {"name": "United Kingdom", "entity_type": "COUNTRY"}
+    ]
+  },
+  {
+    "id": "product-launch", "language": "en",
+    "title": "Apple launches the iPhone in the United States",
+    "content": "Tim Cook announced that Apple would also sell the iPhone in Malaysia.",
+    "expected_entities": [
+      {"name": "Apple", "entity_type": "ORGANIZATION"},
+      {"name": "iPhone", "entity_type": "PRODUCT"},
+      {"name": "United States", "entity_type": "COUNTRY"},
+      {"name": "Tim Cook", "entity_type": "PERSON"},
+      {"name": "Malaysia", "entity_type": "COUNTRY"}
+    ]
+  },
+  {
+    "id": "diplomacy", "language": "en",
+    "title": "Leaders meet in Paris",
+    "content": "Emmanuel Macron met officials from France and Germany in Paris. The United Nations welcomed the talks.",
+    "expected_entities": [
+      {"name": "Paris", "entity_type": "LOCATION"},
+      {"name": "Emmanuel Macron", "entity_type": "PERSON"},
+      {"name": "France", "entity_type": "COUNTRY"},
+      {"name": "Germany", "entity_type": "COUNTRY"},
+      {"name": "The United Nations", "entity_type": "ORGANIZATION"}
+    ]
+  },
+  {
+    "id": "country-aliases", "language": "en",
+    "title": "Trade talks resume between the U.S. and the United Kingdom",
+    "content": "Companies in the United States said the agreement would support investment in London.",
+    "expected_entities": [
+      {"name": "United States", "entity_type": "COUNTRY"},
+      {"name": "United Kingdom", "entity_type": "COUNTRY"},
+      {"name": "London", "entity_type": "LOCATION"}
+    ]
+  },
+  {
+    "id": "no-names", "language": "en",
+    "title": "Researchers publish results",
+    "content": "The study describes a new approach to improving energy efficiency in buildings.",
+    "expected_entities": []
+  }
+]

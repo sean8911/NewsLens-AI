@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Example Atom</title><id>urn:example:feed</id><updated>2026-09-09T07:00:00Z</updated>
+  <entry>
+    <title>Berita AI di Malaysia — 马来西亚</title><id>urn:example:one</id>
+    <link rel="self" href="https://example.com/api/one" type="application/atom+xml"/>
+    <link rel="alternate" href="https://example.com/story" type="text/html"/>
+    <summary>A multilingual example.</summary>
+    <author><name>Example Writer</name></author>
+    <published>2026-09-09T14:00:00+08:00</published><updated>2026-09-09T07:00:00Z</updated>
+    <category term="Malaysia"/>
+  </entry>
+  <entry>
+    <title>Updated only</title><id>urn:example:two</id>
+    <link href="https://example.com/two"/><updated>2026-09-09T07:00:00Z</updated>
+  </entry>
+</feed>
