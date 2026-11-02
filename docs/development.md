@@ -39,7 +39,7 @@ The latest appearance validation passed the production build, ESLint and all 36 
 
 ## CI and evaluation
 
-`.github/workflows/ci.yml` defines workflow linting, Python checks against native PostgreSQL, and frontend lint/build/type/test jobs. A GitHub-hosted run must be observed after upload; local results do not establish a hosted CI pass.
+`.github/workflows/ci.yml` defines workflow linting, Python checks against native PostgreSQL, and frontend lint/build/type/test jobs. The [initial hosted run](https://github.com/sean8911/NewsLens-AI/actions/runs/37125908496) completed successfully. Check [the workflow page](https://github.com/sean8911/NewsLens-AI/actions/workflows/ci.yml) for the current revision; earlier hosted or local results do not establish a pass for later changes.
 
 The evaluation fixtures under `backend/app/evaluation/fixtures/` are a fixed test corpus with authored queries. Retrieval and RAG runners are provided through the project CLI entry points. Their presence does not imply a current benchmark or production accuracy result. Tests and evaluation are separate from collecting current news.
 
