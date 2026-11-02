@@ -7,6 +7,7 @@ pydantic-settings==2.15.0
 SQLAlchemy==2.0.52
 alembic==1.19.2
 pg8000==1.31.5
+scramp==1.4.17
 beautifulsoup4==4.15.0
 ftfy==6.3.1
 APScheduler==3.11.3

@@ -17,6 +17,8 @@ dependencies = [
     "SQLAlchemy>=2.0.36,<2.1",
     "alembic>=1.14,<2",
     "pg8000>=1.31,<2",
+    # pg8000 1.31 uses the channel-binding API removed in scramp 1.5.
+    "scramp>=1.4.17,<1.5",
     "beautifulsoup4>=4.13,<5",
     "ftfy>=6.3,<7",
     "APScheduler>=3.11,<4",
